@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — Karsa Bangun Desa</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="hero" style="padding-bottom:80px;">
+  <div class="container">
+    <div>
+      <div class="eyebrow">KARSA BANGUN DESA</div>
+      <div class="breadcrumb">
+        <a href="index.html">Homepage</a>
+        <span class="sep">&#9654;</span>
+        <span>Kontak Kami</span>
+      </div>
+      <h1>Hubungi <span class="dark-text">Karsa Bangun Desa</span></h1>
+      <p class="lead">
+        Isi formulir di bawah atau hubungi kami langsung via WhatsApp untuk mendiskusikan kebutuhan pendampingan desa Anda.
+      </p>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+      <path d="M0 40 C360 90 720 10 1080 60 C1260 85 1380 40 1440 30 V120 H0 Z" fill="#ffffff" opacity="0.4"/>
+      <path d="M0 65 C400 20 800 100 1200 45 C1320 30 1400 55 1440 60 V120 H0 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<section class="section-light">
+  <div class="container" style="display:grid;grid-template-columns:1.2fr .8fr;gap:48px;">
+    <div>
+      <form id="contact-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nama">Nama Lengkap *</label>
+            <input type="text" id="nama" name="nama" required>
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="whatsapp">No. WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp">
+          </div>
+          <div class="field">
+            <label for="subjek">Subjek</label>
+            <input type="text" id="subjek" name="subjek" placeholder="mis. Pendampingan BUMDes / Pelatihan Desa">
+          </div>
+        </div>
+        <div class="field">
+          <label for="pesan">Pesan *</label>
+          <textarea id="pesan" name="pesan" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-amber">Kirim Pesan</button>
+        <div id="contact-msg" class="form-msg"></div>
+      </form>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:20px;">
+        <div class="tag">WhatsApp Resmi</div>
+        <h3>Layanan Pesan Langsung</h3>
+        <p style="color:var(--ink-soft);">Admin Karsa Bangun Desa siap melayani pertanyaan Anda.</p>
+        <a href="https://api.whatsapp.com/send?phone=6285770003549&text=Assalamualaikum%20Wr.Wb.Hallo%20admin%20karsa%20saya%20dari%20website" target="_blank" class="btn btn-amber" style="margin-top:10px;display:inline-flex;">
+          💬 Chat WhatsApp (+62 857-7000-3549)
+        </a>
+      </div>
+      <div class="card">
+        <div class="tag">Alamat Kantor</div>
+        <h3>Sekretariat Yayasan</h3>
+        <p style="color:var(--ink-soft);">D'Amerta Residence Blok E6 No. 1, RT 01 RW 16<br>Bojongsoang, Kabupaten Bandung 40287</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/common.js"></script>
+<script src="js/kontak.js"></script>
+</body>
+</html>

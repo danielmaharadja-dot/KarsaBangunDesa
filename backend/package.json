@@ -1,0 +1,16 @@
+{
+  "name": "karsa-bangun-desa-backend",
+  "version": "1.0.0",
+  "description": "Backend API + static server untuk situs Karsa Bangun Desa",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node db/init.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
