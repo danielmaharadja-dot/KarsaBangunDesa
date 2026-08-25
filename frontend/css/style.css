@@ -487,21 +487,33 @@ section {
 /* Grid & Cards */
 .grid {
   display: grid;
-  gap: 28px;
+  gap: 24px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-2 {
+.grid-2, .two-col-layout {
   grid-template-columns: repeat(2, 1fr);
 }
 
-@media (max-width: 860px) {
-  .grid-3, .grid-2 {
-    grid-template-columns: 1fr;
-  }
+.two-col-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.keunggulan-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
 }
 
 .card {
