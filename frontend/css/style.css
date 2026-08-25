@@ -1068,3 +1068,153 @@ footer.site-footer ul.footer-list a:hover {
   animation: pulseBadge 3s infinite;
 }
 
+/* =========================================================
+   SISTEM RESPONSIF HP / MOBILE & TABLET COMPREHENSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .grid-4, #home-programs {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .grid-4, .grid-3, .grid-2, #home-programs, #program-grid, .keunggulan-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .hero .container {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 2.8rem) !important;
+  }
+
+  .hero p.lead {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.96rem !important;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .eyebrow, .eyebrow-pill {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .breadcrumb {
+    justify-content: center;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .team-member {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 16px !important;
+  }
+
+  section {
+    padding: 44px 0 !important;
+  }
+
+  .page-header {
+    padding: 36px 0 64px !important;
+  }
+
+  .hero {
+    padding: 28px 0 64px !important;
+  }
+
+  .hero h1 {
+    font-size: 1.95rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .card {
+    padding: 24px 18px !important;
+    border-radius: 18px !important;
+  }
+
+  .site-header .container {
+    height: 70px !important;
+    padding: 0 16px !important;
+  }
+
+  nav.main-nav {
+    top: 70px !important;
+    z-index: 999;
+    background: var(--teal-deep) !important;
+    padding: 16px 20px 24px !important;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .nav-cta {
+    display: none !important;
+  }
+
+  .btn {
+    padding: 11px 20px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Form & Interactive elements on HP */
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .scale {
+    flex-direction: column !important;
+  }
+
+  .scale label {
+    width: 100% !important;
+  }
+
+  /* Footer on HP */
+  footer.site-footer {
+    padding: 44px 0 20px !important;
+  }
+
+  footer.site-footer .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+
