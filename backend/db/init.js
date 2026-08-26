@@ -1,4 +1,3 @@
-// Inisialisasi database SQLite: membuat skema dan mengisi data awal (seed)
 const path = require("path");
 const fs = require("fs");
 const { DatabaseSync } = require("node:sqlite");
@@ -29,7 +28,6 @@ function init() {
     db.exec("COMMIT;");
   }
 
-  // Selalu bersihkan dan isi ulang tabel programs dengan 10 program unggulan resmi
   db.exec("DELETE FROM programs;");
   const insertProgram = db.prepare(
     "INSERT INTO programs (slug, judul, ringkasan, deskripsi, ikon) VALUES (?, ?, ?, ?, ?)"
@@ -110,7 +108,6 @@ function init() {
   for (const r of programs) insertProgram.run(...r);
   db.exec("COMMIT;");
 
-  // Selalu bersihkan dan isi ulang tabel products dengan produk unggulan resmi
   db.exec("DELETE FROM products;");
   const insertProduct = db.prepare(
     "INSERT INTO products (slug, nama, kategori, deskripsi, harga) VALUES (?, ?, ?, ?, ?)"

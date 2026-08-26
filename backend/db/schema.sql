@@ -1,6 +1,3 @@
--- Skema Database SQLite Karsa Bangun Desa (Sederhana & Efisien)
-
--- 1. Tabel Anggota Tim (Struktur Organisasi)
 CREATE TABLE IF NOT EXISTS team_members (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nama TEXT NOT NULL,
@@ -8,7 +5,6 @@ CREATE TABLE IF NOT EXISTS team_members (
   divisi TEXT NOT NULL
 );
 
--- 2. Tabel Program Unggulan
 CREATE TABLE IF NOT EXISTS programs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   slug TEXT UNIQUE NOT NULL,
@@ -18,7 +14,6 @@ CREATE TABLE IF NOT EXISTS programs (
   ikon TEXT DEFAULT 'sprout'
 );
 
--- 3. Tabel Produk & Layanan
 CREATE TABLE IF NOT EXISTS products (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   slug TEXT UNIQUE NOT NULL,
@@ -28,14 +23,12 @@ CREATE TABLE IF NOT EXISTS products (
   harga TEXT NOT NULL
 );
 
--- 4. Tabel Statistik Beranda
 CREATE TABLE IF NOT EXISTS stats (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   label TEXT NOT NULL,
   nilai TEXT NOT NULL
 );
 
--- 5. Tabel Pesan Kontak (Form Kontak)
 CREATE TABLE IF NOT EXISTS contact_messages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nama TEXT NOT NULL,
@@ -46,7 +39,6 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   dibuat_pada DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 6. Tabel Hasil Kalkulator Potensi Desa
 CREATE TABLE IF NOT EXISTS kalkulator_submissions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nama_pengguna TEXT NOT NULL,
@@ -58,7 +50,6 @@ CREATE TABLE IF NOT EXISTS kalkulator_submissions (
   dibuat_pada DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 7. Tabel Berita & Kabar Desa
 CREATE TABLE IF NOT EXISTS berita (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   slug TEXT UNIQUE NOT NULL,
