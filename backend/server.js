@@ -113,6 +113,18 @@ app.get("/api/products", (req, res) => {
   res.json(MOCK_DATA.products);
 });
 
+app.get("/api/products/:slug", (req, res) => {
+  if (db) {
+    try {
+      const row = db.prepare("SELECT * FROM products WHERE slug = ?").get(req.params.slug);
+      if (row) return res.json(row);
+    } catch(e){}
+  }
+  const item = MOCK_DATA.products.find(p => p.slug === req.params.slug);
+  if (!item) return res.status(404).json({ error: "Produk tidak ditemukan" });
+  res.json(item);
+});
+
 app.get("/api/berita", (req, res) => {
   if (db) {
     try {

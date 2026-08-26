@@ -110,45 +110,58 @@ function init() {
   for (const r of programs) insertProgram.run(...r);
   db.exec("COMMIT;");
 
-  const productCount = db.prepare("SELECT COUNT(*) AS c FROM products").get().c;
-  if (productCount === 0) {
-    const insertProduct = db.prepare(
-      "INSERT INTO products (slug, nama, kategori, deskripsi, harga) VALUES (?, ?, ?, ?, ?)"
-    );
-    const products = [
-      [
-        "pelatihan-desa",
-        "Paket Pelatihan Desa",
-        "Training",
-        "Pelatihan tatap muka atau daring untuk aparat dan pengurus BUMDes: perencanaan, pembukuan, dan pemasaran produk desa.",
-        "Mulai dari Rp3.500.000 / kelompok",
-      ],
-      [
-        "pendampingan-coaching",
-        "Coaching Pendampingan Desa",
-        "Coaching",
-        "Pendampingan berkala selama 3-12 bulan untuk desa yang sedang menyusun rencana pengembangan potensi lokal.",
-        "Harga sesuai cakupan program",
-      ],
-      [
-        "konsultasi-kelembagaan",
-        "Konsultasi Kelembagaan & Perizinan",
-        "Consulting",
-        "Konsultasi legalitas BUMDes, kelompok tani hutan, dan koperasi desa.",
-        "Mulai dari Rp1.500.000 / sesi",
-      ],
-      [
-        "kalkulator-potensi-desa",
-        "Kalkulator Potensi Desa",
-        "Alat Bantu",
-        "Alat digital gratis untuk mengukur dan mengklasifikasikan potensi desa secara cepat sebagai dasar perencanaan.",
-        "Gratis",
-      ],
-    ];
-    db.exec("BEGIN TRANSACTION;");
-    for (const r of products) insertProduct.run(...r);
-    db.exec("COMMIT;");
-  }
+  // Selalu bersihkan dan isi ulang tabel products dengan produk unggulan resmi
+  db.exec("DELETE FROM products;");
+  const insertProduct = db.prepare(
+    "INSERT INTO products (slug, nama, kategori, deskripsi, harga) VALUES (?, ?, ?, ?, ?)"
+  );
+  const products = [
+    [
+      "pelatihan-desa",
+      "Paket Pelatihan Desa & BUMDes",
+      "Training & Edukasi",
+      "Pelatihan tatap muka dan praktis untuk aparatur desa & pengurus BUMDes dalam perencanaan bisnis, pembukuan digital, dan pemasaran produk lokal.",
+      "Mulai dari Rp3.500.000 / kelompok",
+    ],
+    [
+      "pendampingan-coaching",
+      "Coaching & Pendampingan Desa Binaan",
+      "Pendampingan",
+      "Program pendampingan intensif selama 3-12 bulan untuk mengakselerasi pengembangan potensi komoditas dan kelembagaan ekonomi desa.",
+      "Harga sesuai cakupan program",
+    ],
+    [
+      "konsultasi-kelembagaan",
+      "Konsultasi Kelembagaan & Perizinan",
+      "Consulting",
+      "Konsultasi legalitas, pembentukan struktur hukum BUMDes, Koperasi Merah Putih, dan perizinan usaha masyarakat desa.",
+      "Mulai dari Rp1.500.000 / sesi",
+    ],
+    [
+      "kopi-desa",
+      "Kopi Arabika Priangan Desa Binaan",
+      "Komoditas Desa",
+      "Kopi khas pegunungan Jawa Barat hasil panen dan olahan kelompok tani binaan Karsa Bangun Desa dengan cita rasa murni.",
+      "Rp45.000 / pack (250g)",
+    ],
+    [
+      "madu-hutan",
+      "Madu Hutan Murni Pasundan",
+      "Hasil Alam",
+      "Madu hutan murni 100% tanpa bahan pengawet hasil panen warga desa binaan dengan kualitas dan keaslian terjaga.",
+      "Rp75.000 / botol (350ml)",
+    ],
+    [
+      "kalkulator-potensi-desa",
+      "Kalkulator Potensi Desa Digital",
+      "Alat Bantu Digital",
+      "Aplikasi digital gratis untuk mengukur dan mengklasifikasikan tingkat potensi serta kesiapan pembangunan desa secara instan.",
+      "Gratis",
+    ],
+  ];
+  db.exec("BEGIN TRANSACTION;");
+  for (const r of products) insertProduct.run(...r);
+  db.exec("COMMIT;");
 
   const statCount = db.prepare("SELECT COUNT(*) AS c FROM stats").get().c;
   if (statCount === 0) {
