@@ -30,7 +30,7 @@ export default function ProductPage() {
   return (
     <div className="pt-24 pb-20 space-y-12">
       {/* HERO */}
-      <section className="bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-[#062923] via-[#1b5e52] to-[#2b7a6d] text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">

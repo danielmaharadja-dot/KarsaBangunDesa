@@ -4,15 +4,12 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
   
-  --color-brand-50: #f0fdf9;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
-  --color-brand-950: #042f2e;
+  /* Brand Logo Color Palette (Karsa Bangun Desa Teal-Emerald) */
+  --color-logo-primary: #2b7a6d;
+  --color-logo-light: #40a996;
+  --color-logo-dark: #1b5e52;
+  --color-logo-deep: #082d26;
+  --color-logo-bg: #f2f9f7;
 
   --color-amber-accent: #f5a623;
   --color-amber-accent-hover: #e09415;
@@ -21,8 +18,8 @@
 @layer base {
   body {
     font-family: var(--font-sans);
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: #f2f9f7;
+    color: #122925;
     overflow-x: hidden;
   }
 
@@ -41,16 +38,24 @@
   animation: floatSlow 6s ease-in-out infinite;
 }
 
+.bg-brand-logo {
+  background-color: #2b7a6d;
+}
+
+.bg-brand-hero {
+  background: linear-gradient(135deg, #072b25 0%, #1b5e52 50%, #2b7a6d 100%);
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(43, 122, 109, 0.2);
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(8, 45, 38, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(64, 169, 150, 0.2);
 }

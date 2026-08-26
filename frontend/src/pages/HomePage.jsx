@@ -55,7 +55,7 @@ export default function HomePage() {
   return (
     <div className="space-y-0">
       {/* HERO SECTION */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-white pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#062923] via-[#1b5e52] to-[#2b7a6d] text-white pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
         {/* Glow ambient background elements */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/15 rounded-full filter blur-[120px] pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-amber-500/10 rounded-full filter blur-[90px] pointer-events-none" />
