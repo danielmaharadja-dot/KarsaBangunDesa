@@ -13,7 +13,8 @@ import {
   ChevronRight,
   TrendingUp,
   Award,
-  BookOpen
+  BookOpen,
+  Sprout
 } from "lucide-react";
 import StatCard from "../components/StatCard";
 import ProgramCard from "../components/ProgramCard";
