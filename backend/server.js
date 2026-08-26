@@ -64,7 +64,7 @@ app.get("/api/health", (req, res) => {
 app.get("/api/stats", (req, res) => {
   if (db) {
     try {
-      const rows = db.prepare("SELECT label, nilai FROM stats ORDER BY urutan").all();
+      const rows = db.prepare("SELECT label, nilai FROM stats ORDER BY id").all();
       return res.json(rows);
     } catch(e){}
   }
@@ -74,7 +74,7 @@ app.get("/api/stats", (req, res) => {
 app.get("/api/team", (req, res) => {
   if (db) {
     try {
-      const rows = db.prepare("SELECT nama, jabatan, divisi FROM team_members ORDER BY urutan").all();
+      const rows = db.prepare("SELECT nama, jabatan, divisi FROM team_members ORDER BY id").all();
       return res.json(rows);
     } catch(e){}
   }
@@ -84,7 +84,7 @@ app.get("/api/team", (req, res) => {
 app.get("/api/programs", (req, res) => {
   if (db) {
     try {
-      const rows = db.prepare("SELECT slug, judul, subjudul, ringkasan, ikon FROM programs ORDER BY urutan").all();
+      const rows = db.prepare("SELECT slug, judul, ringkasan, ikon FROM programs ORDER BY id").all();
       return res.json(rows);
     } catch(e){}
   }
@@ -106,7 +106,7 @@ app.get("/api/programs/:slug", (req, res) => {
 app.get("/api/products", (req, res) => {
   if (db) {
     try {
-      const rows = db.prepare("SELECT slug, nama, kategori, deskripsi, harga FROM products ORDER BY urutan").all();
+      const rows = db.prepare("SELECT slug, nama, kategori, deskripsi, harga FROM products ORDER BY id").all();
       return res.json(rows);
     } catch(e){}
   }
@@ -116,7 +116,7 @@ app.get("/api/products", (req, res) => {
 app.get("/api/berita", (req, res) => {
   if (db) {
     try {
-      const rows = db.prepare("SELECT slug, judul, ringkasan, konten, tanggal, kategori FROM berita ORDER BY urutan").all();
+      const rows = db.prepare("SELECT slug, judul, ringkasan, konten, tanggal, kategori FROM berita ORDER BY id").all();
       return res.json(rows);
     } catch(e){}
   }
@@ -166,12 +166,10 @@ app.post("/api/kalkulator", (req, res) => {
     try {
       const stmt = db.prepare(`
         INSERT INTO kalkulator_submissions
-          (nama_pengguna, email, whatsapp, nama_desa, kecamatan, kabupaten,
-           skor_akses_jalan, skor_sumber_daya_alam, skor_sumber_daya_manusia,
-           skor_kelembagaan, skor_infrastruktur, total_skor, klasifikasi)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          (nama_pengguna, nama_desa, kecamatan, kabupaten, total_skor, klasifikasi)
+        VALUES (?, ?, ?, ?, ?, ?)
       `);
-      const info = stmt.run(nama_pengguna, email || null, whatsapp || null, nama_desa, kecamatan || null, kabupaten || null, skor[0], skor[1], skor[2], skor[3], skor[4], total, klasifikasi);
+      const info = stmt.run(nama_pengguna, nama_desa, kecamatan || null, kabupaten || null, total, klasifikasi);
       return res.status(201).json({ ok: true, id: info.lastInsertRowid, total_skor: total, skor_maksimum: 20, klasifikasi });
     } catch(e){}
   }

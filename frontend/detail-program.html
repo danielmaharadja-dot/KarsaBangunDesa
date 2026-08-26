@@ -485,7 +485,21 @@ function loadProgramDetail() {
   // Populate Hero
   document.title = `${data.judul} — Detail Program Karsa Bangun Desa`;
   document.getElementById("breadcrumb-title").innerText = data.judul;
-  document.getElementById("hero-title").innerHTML = `${data.judul} <span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
+  
+  let formattedTitle = data.judul;
+  if (formattedTitle.toLowerCase().endsWith("desa")) {
+    const lastIndex = formattedTitle.lastIndexOf("Desa");
+    formattedTitle = formattedTitle.substring(0, lastIndex) + `<span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
+  } else {
+    const words = formattedTitle.trim().split(" ");
+    if (words.length > 1) {
+      const lastWord = words.pop();
+      formattedTitle = words.join(" ") + ` <span class="dark-text" style="color:var(--teal-dark);">${lastWord}</span>`;
+    } else {
+      formattedTitle = `${formattedTitle} <span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
+    }
+  }
+  document.getElementById("hero-title").innerHTML = formattedTitle;
   document.getElementById("hero-desc").innerText = data.tagline;
 
   // Overview

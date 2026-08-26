@@ -14,15 +14,15 @@ function init() {
   const teamCount = db.prepare("SELECT COUNT(*) AS c FROM team_members").get().c;
   if (teamCount === 0) {
     const insertTeam = db.prepare(
-      "INSERT INTO team_members (nama, jabatan, divisi, urutan) VALUES (?, ?, ?, ?)"
+      "INSERT INTO team_members (nama, jabatan, divisi) VALUES (?, ?, ?)"
     );
     const team = [
-      ["Rahmat Saleh, S.Hut", "Ketua Dewan Pengurus", "Pengurus", 1],
-      ["Syaiful Taslim", "Direktur Operasional", "Pengurus", 2],
-      ["Linda Biki, S.E.", "Manajer Keuangan", "Keuangan", 3],
-      ["Edi Wicaksono, S.P.", "Manajer Program", "Program", 4],
-      ["Bardi Lamancori, S.Hut", "Manajer Internal", "Internal", 5],
-      ["Lestari Ningsih", "Koordinator Divisi Perencanaan", "Program", 6],
+      ["Rahmat Saleh, S.Hut", "Ketua Dewan Pengurus", "Pengurus"],
+      ["Syaiful Taslim", "Direktur Operasional", "Pengurus"],
+      ["Linda Biki, S.E.", "Manajer Keuangan", "Keuangan"],
+      ["Edi Wicaksono, S.P.", "Manajer Program", "Program"],
+      ["Bardi Lamancori, S.Hut", "Manajer Internal", "Internal"],
+      ["Lestari Ningsih", "Koordinator Divisi Perencanaan", "Program"],
     ];
     db.exec("BEGIN TRANSACTION;");
     for (const r of team) insertTeam.run(...r);
@@ -32,98 +32,78 @@ function init() {
   // Selalu bersihkan dan isi ulang tabel programs dengan 10 program unggulan resmi
   db.exec("DELETE FROM programs;");
   const insertProgram = db.prepare(
-    "INSERT INTO programs (slug, judul, subjudul, ringkasan, deskripsi, ikon, urutan) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO programs (slug, judul, ringkasan, deskripsi, ikon) VALUES (?, ?, ?, ?, ?)"
   );
   const programs = [
     [
       "training",
       "Training",
-      null,
       "Memberi solusi dan layanan terbaik untuk memenuhi kebutuhan dalam pengembangan desa",
       "Memberi solusi dan layanan terbaik untuk memenuhi kebutuhan dalam pengembangan desa",
       "terrace",
-      1,
     ],
     [
       "coaching",
       "Coaching",
-      null,
       "Memajukan pemimpin desa dalam menciptakan pengembangan desa yang luar biasa melalui solusi pembinaan terfokus",
       "Memajukan pemimpin desa dalam menciptakan pengembangan desa yang luar biasa melalui solusi pembinaan terfokus",
       "sprout",
-      2,
     ],
     [
       "mentoring",
       "Mentoring",
-      null,
       "Didampingi profesional yang berpengalaman luas dalam bidangnya dan akan membagikan pengetahuan, pengalaman dan wawasan",
       "Didampingi profesional yang berpengalaman luas dalam bidangnya dan akan membagikan pengetahuan, pengalaman dan wawasan",
       "leaf",
-      3,
     ],
     [
       "consulting",
       "Consulting",
-      null,
       "Memberi solusi yang efektif dalam mengoptimalkan berbagai potensi sumber daya yang ada di desa sebagai kunci keberhasilan pengembangan desa",
       "Memberi solusi yang efektif dalam mengoptimalkan berbagai potensi sumber daya yang ada di desa sebagai kunci keberhasilan pengembangan desa",
       "contour",
-      4,
     ],
     [
       "berkah-berbagi-makan",
       "Berkah Berbagi Makan",
-      null,
       "Program BBM adalah gerakan kolaborasi sosial yang menghubungkan kepedulian masyarakat dengan pemberdayaan UMKM lokal binaan Karsa Bangun Desa.",
       "Program BBM adalah gerakan kolaborasi sosial yang menghubungkan kepedulian masyarakat dengan pemberdayaan UMKM lokal binaan Karsa Bangun Desa.",
       "sprout",
-      5,
     ],
     [
       "berkah-berbagi-quran",
       "Berkah Berbagi Qur’an",
-      null,
       "Program BBQ hadir sebagai jembatan kepedulian masyarakat kota kepada saudara saudara kita di desa.",
       "Program BBQ hadir sebagai jembatan kepedulian masyarakat kota kepada saudara saudara kita di desa.",
       "leaf",
-      6,
     ],
     [
       "saluran-air-warga",
       "Saluran Air untuk Warga Desa",
-      null,
       "Program SAWER hadir untuk mewujudkan akses air bersih yang layak melalui pipanisasi dan pembangunan sumber air bagi warga desa binaan Karsa Bangun Desa di Jawa Barat.",
       "Program SAWER hadir untuk mewujudkan akses air bersih yang layak melalui pipanisasi dan pembangunan sumber air bagi warga desa binaan Karsa Bangun Desa di Jawa Barat.",
       "terrace",
-      7,
     ],
     [
       "berkah-ekonomi-lokal-umkm",
       "Berkah Ekonomi Lokal untuk UMKM",
-      "Andalan Negeri",
       "Seperti berlian yang lahir dari proses panjang dan diasah menjadi bernilai tinggi— UMKM desa binaan KBD memiliki potensi luar biasa yang menunggu untuk dikembangkan.",
       "Seperti berlian yang lahir dari proses panjang dan diasah menjadi bernilai tinggi— UMKM desa binaan KBD memiliki potensi luar biasa yang menunggu untuk dikembangkan.",
       "sprout",
-      8,
     ],
     [
       "belajar-bertumbuh-berdampak",
       "Belajar, Bertumbuh, Berdampak",
-      null,
       "KARSA Bangun Desa Academy (KBD Academy) adalah lembaga pelatihan dan pengembangan kapasitas di bawah naungan Yayasan Karsa Bangun Desa, yang hadir sebagai KBD School of Business untuk memperkuat sumber daya manusia di tingkat desa dan komunitas lokal.",
       "KARSA Bangun Desa Academy (KBD Academy) adalah lembaga pelatihan dan pengembangan kapasitas di bawah naungan Yayasan Karsa Bangun Desa, yang hadir sebagai KBD School of Business untuk memperkuat sumber daya manusia di tingkat desa dan komunitas lokal.",
       "contour",
-      9,
     ],
     [
       "listrik-energi-terbarukan",
       "Listrik Energi Terbarukan Untuk Warga Desa",
-      null,
       "Program LENTERA DESA hadir sebagai jawaban nyata atas tantangan ini. Dengan menghadirkan instalasi panel surya untuk masjid, mushola, dan gedung serbaguna di desa-desa binaan Karsa Bangun Desa.",
       "Program LENTERA DESA hadir sebagai jawaban nyata atas tantangan ini. Dengan menghadirkan instalasi panel surya untuk masjid, mushola, dan gedung serbaguna di desa-desa binaan Karsa Bangun Desa.",
       "leaf",
-      10,
     ],
   ];
   db.exec("BEGIN TRANSACTION;");
@@ -133,7 +113,7 @@ function init() {
   const productCount = db.prepare("SELECT COUNT(*) AS c FROM products").get().c;
   if (productCount === 0) {
     const insertProduct = db.prepare(
-      "INSERT INTO products (slug, nama, kategori, deskripsi, harga, urutan) VALUES (?, ?, ?, ?, ?, ?)"
+      "INSERT INTO products (slug, nama, kategori, deskripsi, harga) VALUES (?, ?, ?, ?, ?)"
     );
     const products = [
       [
@@ -142,7 +122,6 @@ function init() {
         "Training",
         "Pelatihan tatap muka atau daring untuk aparat dan pengurus BUMDes: perencanaan, pembukuan, dan pemasaran produk desa.",
         "Mulai dari Rp3.500.000 / kelompok",
-        1,
       ],
       [
         "pendampingan-coaching",
@@ -150,7 +129,6 @@ function init() {
         "Coaching",
         "Pendampingan berkala selama 3-12 bulan untuk desa yang sedang menyusun rencana pengembangan potensi lokal.",
         "Harga sesuai cakupan program",
-        2,
       ],
       [
         "konsultasi-kelembagaan",
@@ -158,7 +136,6 @@ function init() {
         "Consulting",
         "Konsultasi legalitas BUMDes, kelompok tani hutan, dan koperasi desa.",
         "Mulai dari Rp1.500.000 / sesi",
-        3,
       ],
       [
         "kalkulator-potensi-desa",
@@ -166,7 +143,6 @@ function init() {
         "Alat Bantu",
         "Alat digital gratis untuk mengukur dan mengklasifikasikan potensi desa secara cepat sebagai dasar perencanaan.",
         "Gratis",
-        4,
       ],
     ];
     db.exec("BEGIN TRANSACTION;");
@@ -177,13 +153,13 @@ function init() {
   const statCount = db.prepare("SELECT COUNT(*) AS c FROM stats").get().c;
   if (statCount === 0) {
     const insertStat = db.prepare(
-      "INSERT INTO stats (label, nilai, urutan) VALUES (?, ?, ?)"
+      "INSERT INTO stats (label, nilai) VALUES (?, ?)"
     );
     const stats = [
-      ["Desa didampingi", "60+", 1],
-      ["Kabupaten/kota terjangkau", "8", 2],
-      ["Tahun pengalaman", "12+", 3],
-      ["BUMDes diperkuat", "45+", 4],
+      ["Desa didampingi", "60+"],
+      ["Kabupaten/kota terjangkau", "8"],
+      ["Tahun pengalaman", "12+"],
+      ["BUMDes diperkuat", "45+"],
     ];
     db.exec("BEGIN TRANSACTION;");
     for (const r of stats) insertStat.run(...r);
@@ -193,7 +169,7 @@ function init() {
   const beritaCount = db.prepare("SELECT COUNT(*) AS c FROM berita").get().c;
   if (beritaCount === 0) {
     const insertBerita = db.prepare(
-      "INSERT INTO berita (slug, judul, ringkasan, konten, tanggal, kategori, urutan) VALUES (?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO berita (slug, judul, ringkasan, konten, tanggal, kategori) VALUES (?, ?, ?, ?, ?, ?)"
     );
     const beritaItems = [
       [
@@ -203,7 +179,6 @@ function init() {
         "Pemberdayaan ekonomi warga desa melalui Koperasi Merah Putih membuka akses permodalan dan distribusi produk unggulan desa secara mandiri dan akuntabel.",
         "9 Juli 2025",
         "Ekonomi Desa",
-        1,
       ],
       [
         "implementasi-koperasi-desa-merah-putih-di-jawa-barat",
@@ -212,7 +187,6 @@ function init() {
         "Karsa Bangun Desa mendampingi implementasi Koperasi Desa Merah Putih di berbagai kabupaten di Jawa Barat untuk memperkuat daya saing produk lokal.",
         "21 April 2025",
         "Pendampingan",
-        2,
       ],
       [
         "kolaborasi-pentahelix-pemberdayaan-desa",
@@ -221,7 +195,6 @@ function init() {
         "Pendekatan pentahelix menjadi kunci utama Karsa Bangun Desa dalam menggerakkan potensi lokal secara holistik dan adaptif.",
         "20 Agustus 2026",
         "Inovasi Desa",
-        3,
       ],
     ];
     db.exec("BEGIN TRANSACTION;");
