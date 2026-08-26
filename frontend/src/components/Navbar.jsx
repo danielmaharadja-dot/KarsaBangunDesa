@@ -39,14 +39,14 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#082d26]/95 backdrop-blur-md shadow-xl border-b border-[#2b7a6d]/30 py-3"
-          : "bg-gradient-to-b from-[#051f1b]/90 to-transparent backdrop-blur-sm py-4"
+          ? "bg-[#064e3b]/95 backdrop-blur-md shadow-xl border-b border-[#10b981]/30 py-3"
+          : "bg-gradient-to-b from-[#043327]/90 to-transparent backdrop-blur-sm py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-12 bg-[#2b7a6d] rounded-lg p-1.5 flex items-center justify-center shadow-lg shadow-[#082d26]/60 group-hover:bg-[#40a996] transition-all duration-300 border border-[#40a996]/40">
+          <div className="w-10 h-12 bg-[#10b981] rounded-lg p-1.5 flex items-center justify-center shadow-lg shadow-[#064e3b]/60 group-hover:bg-[#34d399] transition-all duration-300 border border-[#34d399]/40">
             <svg viewBox="0 0 36 44" fill="none" className="w-full h-full text-white">
               <path
                 d="M18 2 L33 10 V32 L18 40 L3 32 V10 Z"
@@ -124,7 +124,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-[#082d26]/95 backdrop-blur-xl border-b border-[#2b7a6d]/30 px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-[#064e3b]/95 backdrop-blur-xl border-b border-[#10b981]/30 px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top duration-300">
           {NAV_ITEMS.map((item) => {
             const isActive = location.pathname === item.path;
             return (
@@ -133,8 +133,8 @@ export default function Navbar() {
                 to={item.path}
                 className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors ${
                   isActive
-                    ? "bg-[#2b7a6d] text-white font-semibold shadow-md shadow-[#082d26]/40"
-                    : "text-slate-200 hover:bg-[#1b5e52] hover:text-white"
+                    ? "bg-[#10b981] text-white font-semibold shadow-md shadow-[#064e3b]/40"
+                    : "text-slate-200 hover:bg-[#059669] hover:text-white"
                 }`}
               >
                 <div className="flex items-center gap-2">

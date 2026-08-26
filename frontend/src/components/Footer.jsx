@@ -4,14 +4,14 @@ import { Phone, Mail, MapPin, ArrowRight, Instagram, Facebook, Youtube } from "l
 
 export default function Footer() {
   return (
-    <footer className="bg-[#051f1b] text-slate-300 pt-16 pb-8 border-t border-[#1b5e52]/40">
+    <footer className="bg-[#04291f] text-slate-300 pt-16 pb-8 border-t border-[#059669]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#1b5e52]/40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#059669]/40">
           
           {/* Col 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-12 bg-[#2b7a6d] rounded-lg p-1.5 flex items-center justify-center border border-[#40a996]/30">
+              <div className="w-10 h-12 bg-[#10b981] rounded-lg p-1.5 flex items-center justify-center border border-[#34d399]/30">
                 <svg viewBox="0 0 36 44" fill="none" className="w-full h-full text-white">
                   <path d="M18 2 L33 10 V32 L18 40 L3 32 V10 Z" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
                   <path d="M18 10 V31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>

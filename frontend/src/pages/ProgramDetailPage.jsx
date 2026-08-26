@@ -50,7 +50,7 @@ export default function ProgramDetailPage() {
   return (
     <div className="pt-24 pb-20 space-y-12">
       {/* HEADER */}
-      <section className="bg-gradient-to-r from-[#062923] via-[#1b5e52] to-[#2b7a6d] text-white py-14 lg:py-20">
+      <section className="bg-gradient-to-r from-[#043327] via-[#059669] to-[#10b981] text-white py-14 lg:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <Link
             to="/program"
