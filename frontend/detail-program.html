@@ -478,6 +478,20 @@ function getSlugFromUrl() {
   return params.get("slug") || "training";
 }
 
+function formatHeroTitle(judul) {
+  if (!judul) return "";
+  let str = judul.trim();
+  if (/desa$/i.test(str)) {
+    return str.replace(/desa$/i, '<span class="dark-text" style="color:var(--teal-dark);">Desa</span>');
+  }
+  const words = str.split(/\s+/);
+  if (words.length > 1) {
+    const last = words.pop();
+    return `${words.join(" ")} <span class="dark-text" style="color:var(--teal-dark);">${last}</span>`;
+  }
+  return `${str} <span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
+}
+
 function loadProgramDetail() {
   const slug = getSlugFromUrl();
   const data = PROGRAM_DETAILS_DATA[slug] || PROGRAM_DETAILS_DATA["training"];
@@ -485,21 +499,7 @@ function loadProgramDetail() {
   // Populate Hero
   document.title = `${data.judul} — Detail Program Karsa Bangun Desa`;
   document.getElementById("breadcrumb-title").innerText = data.judul;
-  
-  let formattedTitle = data.judul;
-  if (formattedTitle.toLowerCase().endsWith("desa")) {
-    const lastIndex = formattedTitle.lastIndexOf("Desa");
-    formattedTitle = formattedTitle.substring(0, lastIndex) + `<span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
-  } else {
-    const words = formattedTitle.trim().split(" ");
-    if (words.length > 1) {
-      const lastWord = words.pop();
-      formattedTitle = words.join(" ") + ` <span class="dark-text" style="color:var(--teal-dark);">${lastWord}</span>`;
-    } else {
-      formattedTitle = `${formattedTitle} <span class="dark-text" style="color:var(--teal-dark);">Desa</span>`;
-    }
-  }
-  document.getElementById("hero-title").innerHTML = formattedTitle;
+  document.getElementById("hero-title").innerHTML = formatHeroTitle(data.judul);
   document.getElementById("hero-desc").innerText = data.tagline;
 
   // Overview
