@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ShieldCheck, Target, Users, Award, HeartHandshake, CheckCircle2, ArrowRight } from "lucide-react";
 import TeamCard from "../components/TeamCard";
+import { getApiUrl } from "../config/api";
 
 export default function AboutPage() {
   const [team, setTeam] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/team")
+    fetch(getApiUrl("/api/team"))
       .then((r) => r.json())
       .then((data) => setTeam(data))
       .catch((err) => console.error("Error loading team:", err))

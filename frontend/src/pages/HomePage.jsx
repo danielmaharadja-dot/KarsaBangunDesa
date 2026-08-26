@@ -19,6 +19,7 @@ import StatCard from "../components/StatCard";
 import ProgramCard from "../components/ProgramCard";
 import BeritaCard from "../components/BeritaCard";
 import ProductCard from "../components/ProductCard";
+import { getApiUrl } from "../config/api";
 
 export default function HomePage() {
   const [stats, setStats] = useState([]);
@@ -31,10 +32,10 @@ export default function HomePage() {
     async function fetchData() {
       try {
         const [statsRes, progRes, prodRes, beritaRes] = await Promise.all([
-          fetch("/api/stats").then((r) => r.json()).catch(() => []),
-          fetch("/api/programs").then((r) => r.json()).catch(() => []),
-          fetch("/api/products").then((r) => r.json()).catch(() => []),
-          fetch("/api/berita").then((r) => r.json()).catch(() => []),
+          fetch(getApiUrl("/api/stats")).then((r) => r.json()).catch(() => []),
+          fetch(getApiUrl("/api/programs")).then((r) => r.json()).catch(() => []),
+          fetch(getApiUrl("/api/products")).then((r) => r.json()).catch(() => []),
+          fetch(getApiUrl("/api/berita")).then((r) => r.json()).catch(() => []),
         ]);
 
         setStats(statsRes);

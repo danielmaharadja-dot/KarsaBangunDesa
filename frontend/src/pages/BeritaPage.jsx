@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BookOpen, Search } from "lucide-react";
 import BeritaCard from "../components/BeritaCard";
+import { getApiUrl } from "../config/api";
 
 export default function BeritaPage() {
   const [beritaList, setBeritaList] = useState([]);
@@ -8,7 +9,7 @@ export default function BeritaPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/berita")
+    fetch(getApiUrl("/api/berita"))
       .then((r) => r.json())
       .then((data) => setBeritaList(data))
       .catch((err) => console.error("Error fetching berita:", err))

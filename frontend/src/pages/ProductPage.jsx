@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ShoppingBag, Search, Tag } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import { getApiUrl } from "../config/api";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(getApiUrl("/api/products"))
       .then((r) => r.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err))

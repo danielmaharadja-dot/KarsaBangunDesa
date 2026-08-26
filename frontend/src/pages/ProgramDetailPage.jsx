@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MessageCircle, CheckCircle2, Sprout, Share2 } from "lucide-react";
+import { getApiUrl } from "../config/api";
 
 export default function ProgramDetailPage() {
   const { slug } = useParams();
@@ -9,7 +10,7 @@ export default function ProgramDetailPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/programs/${slug}`)
+    fetch(getApiUrl(`/api/programs/${slug}`))
       .then((r) => {
         if (!r.ok) throw new Error("Program not found");
         return r.json();

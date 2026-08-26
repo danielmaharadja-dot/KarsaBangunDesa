@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Compass, Search, Sprout } from "lucide-react";
 import ProgramCard from "../components/ProgramCard";
+import { getApiUrl } from "../config/api";
 
 export default function ProgramPage() {
   const [programs, setPrograms] = useState([]);
@@ -8,7 +9,7 @@ export default function ProgramPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/programs")
+    fetch(getApiUrl("/api/programs"))
       .then((r) => r.json())
       .then((data) => setPrograms(data))
       .catch((err) => console.error("Error fetching programs:", err))

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MessageCircle, Tag, ShoppingBag } from "lucide-react";
+import { getApiUrl } from "../config/api";
 
 export default function ProductDetailPage() {
   const { slug } = useParams();
@@ -9,7 +10,7 @@ export default function ProductDetailPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/products/${slug}`)
+    fetch(getApiUrl(`/api/products/${slug}`))
       .then((r) => {
         if (!r.ok) throw new Error("Product not found");
         return r.json();

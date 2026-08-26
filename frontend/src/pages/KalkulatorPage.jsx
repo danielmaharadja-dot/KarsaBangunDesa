@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Calculator, CheckCircle, AlertCircle, MessageCircle, RefreshCw } from "lucide-react";
+import { getApiUrl } from "../config/api";
 
 export default function KalkulatorPage() {
   const [formData, setFormData] = useState({
@@ -68,7 +69,7 @@ export default function KalkulatorPage() {
     };
 
     try {
-      const res = await fetch("/api/kalkulator", {
+      const res = await fetch(getApiUrl("/api/kalkulator"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
