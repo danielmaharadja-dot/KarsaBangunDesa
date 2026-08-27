@@ -14,13 +14,20 @@ import {
   TrendingUp,
   Award,
   BookOpen,
-  Sprout
+  Sprout,
+  Camera,
+  Eye,
+  X,
+  CheckCircle2,
+  Calendar,
+  MapPin
 } from "lucide-react";
 import StatCard from "../components/StatCard";
 import ProgramCard from "../components/ProgramCard";
 import BeritaCard from "../components/BeritaCard";
 import ProductCard from "../components/ProductCard";
 import { getApiUrl } from "../config/api";
+import workshopImg from "../assets/workshop.jpg";
 
 export default function HomePage() {
   const [stats, setStats] = useState([]);
@@ -28,6 +35,7 @@ export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [berita, setBerita] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -116,23 +124,36 @@ export default function HomePage() {
 
             {/* Right Media Card */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl p-3 bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700/60 shadow-2xl group">
+              <div 
+                onClick={() => setSelectedImage({
+                  src: workshopImg,
+                  title: "Building a Great Team Workshop",
+                  subtitle: "Pelatihan Kepemimpinan & Penguatan Tim Penggerak Desa",
+                  desc: "Dokumentasi kegiatan pelatihan workshop penguatan kapasitas SDM, pembekalan materi Visi Misi, serta 4 Pilar Layanan Karsa Bangun Desa (Training, Coaching, Mentoring, & Consulting)."
+                })}
+                className="relative rounded-3xl p-3 bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700/60 shadow-2xl group cursor-pointer"
+              >
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                   <img
-                    src="/img/workshop.jpg"
+                    src={workshopImg}
                     alt="Building a Great Team Workshop — Karsa Bangun Desa"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                    onError={(e) => {
-                      // Fallback image gradient if image not found
-                      e.target.style.display = 'none';
-                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                  
+                  {/* Hover Overlay Icon */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/40 backdrop-blur-[2px]">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-600/90 text-white font-bold text-xs uppercase tracking-wider shadow-lg">
+                      <Eye className="w-4 h-4" />
+                      Perbesar Foto
+                    </span>
+                  </div>
+
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-slate-950 uppercase tracking-wider mb-2">
                       Dokumentasi Pelatihan
                     </span>
-                    <h3 className="font-bold text-lg leading-tight">
+                    <h3 className="font-bold text-lg leading-tight group-hover:text-emerald-300 transition-colors">
                       Building a Great Team Workshop
                     </h3>
                     <p className="text-xs text-slate-300 mt-1">
@@ -168,6 +189,142 @@ export default function HomePage() {
                 <StatCard label="BUMDes Diperkuat" nilai="45+" />
               </>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* DOKUMENTASI KEGIATAN & WORKSHOP SECTION */}
+      <section className="py-20 bg-slate-950 text-white relative overflow-hidden border-b border-slate-800">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                <Camera className="w-3.5 h-3.5 text-emerald-400" />
+                DOKUMENTASI KEGIATAN DESA
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+                Jejak Langkah & Workshop Pemberdayaan
+              </h2>
+              <p className="text-slate-400 text-base max-w-2xl">
+                Dokumentasi langsung dari kegiatan pembekalan, penguatan kapasitas SDM, dan penyusunan strategi pembangunan desa di lapangan.
+              </p>
+            </div>
+            <div>
+              <a
+                href="https://api.whatsapp.com/send?phone=6285770003549&text=Assalamualaikum%20admin%20karsa,%20saya%20ingin%20mengundang%20workshop%20pemberdayaan%20desa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-amber-500/20"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Undang Workshop Desa</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+            {/* Image card highlight */}
+            <div className="lg:col-span-7">
+              <div 
+                onClick={() => setSelectedImage({
+                  src: workshopImg,
+                  title: "Building a Great Team Workshop",
+                  subtitle: "Pelatihan Kepemimpinan & Penguatan Tim Penggerak Desa",
+                  desc: "Dokumentasi kegiatan pelatihan workshop penguatan kapasitas SDM, pembekalan materi Visi Misi, serta 4 Pilar Layanan Karsa Bangun Desa (Training, Coaching, Mentoring, & Consulting)."
+                })}
+                className="relative rounded-2xl overflow-hidden aspect-[16/10] group cursor-pointer border border-slate-700/80 shadow-xl"
+              >
+                <img
+                  src={workshopImg}
+                  alt="Building a Great Team Workshop — Karsa Bangun Desa"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-50 transition-opacity" />
+                
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                  <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950 uppercase tracking-wider shadow-md">
+                    Building a Great Team
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 uppercase tracking-wider backdrop-blur-md">
+                    Saung Desa
+                  </span>
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                  <div>
+                    <h3 className="font-extrabold text-xl leading-tight group-hover:text-emerald-400 transition-colors">
+                      Building a Great Team Workshop
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-1 flex items-center gap-2">
+                      <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Lokasi Binaan Karsa Bangun Desa</span>
+                    </p>
+                  </div>
+                  <div className="p-3 bg-emerald-600 rounded-xl group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                    <Eye className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Details */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="space-y-2">
+                <span className="text-amber-400 font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  HIGHTLIGHT KEGIATAN UNGGULAN
+                </span>
+                <h3 className="text-2xl font-bold font-display text-white">
+                  Pelatihan Kepemimpinan & Penguatan SDM Desa
+                </h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Dalam workshop ini, tim Karsa Bangun Desa memberikan pembekalan komprehensif mengenai visi misi pembangunan desa, kepemimpinan adaptif, serta strategi penguatan kelembagaan desa.
+                </p>
+              </div>
+
+              {/* 4 Pilar Badge list */}
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/60 text-emerald-300 font-bold flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Training SDM Desa</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/60 text-emerald-300 font-bold flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Coaching Kepemimpinan</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/60 text-emerald-300 font-bold flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Mentoring Berkelanjutan</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/60 text-emerald-300 font-bold flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Consulting Potensi Desa</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-800 flex items-center gap-4">
+                <button
+                  onClick={() => setSelectedImage({
+                    src: workshopImg,
+                    title: "Building a Great Team Workshop",
+                    subtitle: "Pelatihan Kepemimpinan & Penguatan Tim Penggerak Desa",
+                    desc: "Dokumentasi kegiatan pelatihan workshop penguatan kapasitas SDM, pembekalan materi Visi Misi, serta 4 Pilar Layanan Karsa Bangun Desa (Training, Coaching, Mentoring, & Consulting)."
+                  })}
+                  className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg shadow-emerald-600/30"
+                >
+                  <Eye className="w-4 h-4" />
+                  <span>Lihat Foto Penuh</span>
+                </button>
+                <Link
+                  to="/program"
+                  className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"
+                >
+                  <span>Program Pelatihan</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -407,6 +564,65 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      {/* LIGHTBOX MODAL PREVIEW */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl space-y-0">
+            {/* Header / Close button */}
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-800">
+              <div>
+                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950 uppercase tracking-wider">
+                  DOKUMENTASI FOTO KEGIATAN
+                </span>
+                <h3 className="text-xl font-bold font-display text-white mt-1">
+                  {selectedImage.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+                aria-label="Tutup preview"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-4 sm:p-6 space-y-4">
+              <div className="relative rounded-2xl overflow-hidden max-h-[60vh] bg-slate-950 border border-slate-800 flex items-center justify-center">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="w-full h-full object-contain max-h-[60vh]"
+                />
+              </div>
+              <div className="space-y-2 text-slate-300 text-sm">
+                <p className="font-semibold text-emerald-400 text-base">{selectedImage.subtitle}</p>
+                <p className="leading-relaxed font-light">{selectedImage.desc}</p>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 sm:p-6 border-t border-slate-800 bg-slate-950/50 flex flex-wrap items-center justify-between gap-4">
+              <div className="text-xs text-slate-400 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Yayasan Karsa Bangun Desa — Dokumentasi Asli Kegiatan</span>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=6285770003549&text=Assalamualaikum%20admin%20karsa,%20saya%20tertarik%20dengan%20kegiatan%20Building%20a%20Great%20Team%20Workshop"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-md"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Tanyakan Detail Workshop</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
