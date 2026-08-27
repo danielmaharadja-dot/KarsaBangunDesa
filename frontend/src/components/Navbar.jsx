@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, MessageCircle, Calculator, ChevronRight } from "lucide-react";
+import { Menu, X, MessageCircle, Calculator, ChevronRight, ShieldCheck } from "lucide-react";
 
 const NAV_ITEMS = [
   { path: "/", label: "Beranda" },
@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { path: "/berita", label: "Berita" },
   { path: "/kalkulator", label: "Kalkulator Desa", isBadge: true },
   { path: "/kontak", label: "Kontak" },
+  { path: "/admin", label: "Admin", isAdminBadge: true },
 ];
 
 export default function Navbar() {
@@ -85,6 +86,8 @@ export default function Navbar() {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative ${
                   isActive
                     ? "text-white bg-emerald-600/30 font-semibold border border-emerald-500/40"
+                    : item.isAdminBadge
+                    ? "text-amber-300 hover:text-white hover:bg-amber-500/20 font-bold border border-amber-500/30"
                     : "text-slate-200 hover:text-white hover:bg-slate-800/60"
                 }`}
               >
@@ -101,6 +104,14 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/admin"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 transition-all"
+          >
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>Admin</span>
+          </Link>
+
           <a
             href="https://api.whatsapp.com/send?phone=6285770003549&text=Assalamualaikum%20Wr.Wb.Hallo%20admin%20karsa%20saya%20dari%20website"
             target="_blank"
