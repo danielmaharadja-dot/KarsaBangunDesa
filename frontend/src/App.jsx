@@ -13,6 +13,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import BeritaPage from "./pages/BeritaPage";
 import KalkulatorPage from "./pages/KalkulatorPage";
 import ContactPage from "./pages/ContactPage";
+import AdminPage from "./pages/AdminPage";
 
 // Helper component to scroll window to top on page change
 function ScrollToTop() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/berita" element={<BeritaPage />} />
           <Route path="/kalkulator" element={<KalkulatorPage />} />
           <Route path="/kontak" element={<ContactPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>

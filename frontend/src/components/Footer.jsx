@@ -113,6 +113,11 @@ export default function Footer() {
                   <span className="text-emerald-500">•</span> Formulir Kontak
                 </Link>
               </li>
+              <li>
+                <Link to="/admin" className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-2">
+                  <span className="text-amber-400">•</span> Panel Admin
+                </Link>
+              </li>
             </ul>
           </div>
 

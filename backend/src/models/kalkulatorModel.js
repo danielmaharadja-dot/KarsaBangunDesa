@@ -19,11 +19,39 @@ const kalkulatorModel = {
         `);
         const info = stmt.run(nama_pengguna, nama_desa, kecamatan || null, kabupaten || null, total, klasifikasi);
         return { ok: true, id: info.lastInsertRowid };
-      } catch (e) {}
+      } catch (e) {
+        console.error("Error creating kalkulator submission:", e);
+      }
     }
     return { ok: true, id: Date.now() };
   },
+
+  getAll: () => {
+    if (db) {
+      try {
+        return db.prepare("SELECT * FROM kalkulator_submissions ORDER BY id DESC").all();
+      } catch (e) {
+        console.error("Error fetching kalkulator submissions:", e);
+      }
+    }
+    return [];
+  },
+
+  delete: (id) => {
+    if (db) {
+      try {
+        const stmt = db.prepare("DELETE FROM kalkulator_submissions WHERE id = ?");
+        stmt.run(id);
+        return { ok: true };
+      } catch (e) {
+        console.error("Error deleting kalkulator submission:", e);
+      }
+    }
+    return { ok: true };
+  },
+
   klasifikasiSkor
 };
 
 module.exports = kalkulatorModel;
+
